@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ffflqaaktw41"]
+[gd_scene load_steps=4 format=3 uid="uid://ffflqaaktw41"]
 
 [ext_resource type="Texture2D" uid="uid://bcdk47wfjyeig" path="res://images/navroom.jpg" id="1_6rchb"]
 [ext_resource type="Script" path="res://scripts/navscene.gd" id="1_wao4i"]
+[ext_resource type="PackedScene" uid="uid://646su0xtl612" path="res://levels/ship.tscn" id="3_rekcc"]
 
 [node name="navscene" type="Control"]
 layout_mode = 3
@@ -14,15 +15,10 @@ script = ExtResource("1_wao4i")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1500.0
-offset_bottom = 1044.0
+offset_right = 2302.0
+offset_bottom = 1296.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_6rchb")
 
-[node name="return" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "back"
-
-[connection signal="pressed" from="return" to="." method="_on_return_pressed"]
+[node name="ship" parent="." instance=ExtResource("3_rekcc")]
+position = Vector2(556, 317)
