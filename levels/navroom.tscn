@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnlvspiq3ajyk"]
+
+[ext_resource type="Script" path="res://scripts/NavRoom.gd" id="1_yv4ne"]
+[ext_resource type="Texture2D" uid="uid://c7krgcqmo36sh" path="res://images/controlcar.jpg" id="2_7dtcf"]
+
+[node name="controlroom" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yv4ne")
+
+[node name="Room" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1024.0
+offset_bottom = 393.0
+texture = ExtResource("2_7dtcf")
+
+[node name="NavButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 172.0
+offset_right = 479.0
+offset_bottom = 203.0
+text = "enter"
+
+[node name="RudderButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 140.0
+offset_right = 753.0
+offset_bottom = 171.0
+text = "Rudder"
+
+[node name="EngineButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 653.0
+offset_top = 247.0
+offset_right = 795.0
+offset_bottom = 278.0
+text = "Engine Telegraph
+"
+
+[connection signal="pressed" from="NavButton" to="." method="_on_nav_button_pressed"]
+[connection signal="pressed" from="RudderButton" to="." method="_on_rudder_button_pressed"]
+[connection signal="pressed" from="EngineButton" to="." method="_on_engine_button_pressed"]

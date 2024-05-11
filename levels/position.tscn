@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgrfsga6vthc2"]
+
+[ext_resource type="PackedScene" uid="uid://646su0xtl612" path="res://levels/ship.tscn" id="1_5mutg"]
+[ext_resource type="Script" path="res://scripts/debug.gd" id="2_75rhb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84s8u"]
+
+[node name="position" type="Node"]
+
+[node name="ship" parent="." instance=ExtResource("1_5mutg")]
+
+[node name="debug" type="Area2D" parent="."]
+position = Vector2(0, 372)
+script = ExtResource("2_75rhb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="debug"]
+shape = SubResource("RectangleShape2D_84s8u")
+
+[connection signal="body_entered" from="debug" to="debug" method="_on_body_entered"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ffflqaaktw41"]
+
+[ext_resource type="Texture2D" uid="uid://bcdk47wfjyeig" path="res://images/navroom.jpg" id="1_6rchb"]
+[ext_resource type="Script" path="res://scripts/navscene.gd" id="1_wao4i"]
+
+[node name="navscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wao4i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1500.0
+offset_bottom = 1044.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_6rchb")
+
+[node name="return" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "back"
+
+[connection signal="pressed" from="return" to="." method="_on_return_pressed"]

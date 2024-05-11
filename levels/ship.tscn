@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://646su0xtl612"]
+
+[ext_resource type="Texture2D" uid="uid://b50xyxdmo10hh" path="res://images/Hindenburg.png" id="1_1x08l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdiml"]
+radius = 55.6326
+height = 284.702
+
+[node name="ship" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_1x08l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-6, -6)
+rotation = 4.3469
+shape = SubResource("CapsuleShape2D_kdiml")
+
+[node name="direction" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 200, 0)
+width = 5.0

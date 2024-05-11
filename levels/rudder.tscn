@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://booyvpjgdlj5t"]
+
+[ext_resource type="Texture2D" uid="uid://mgl83n1xxeea" path="res://images/rudder.jpg" id="1_n8ufj"]
+[ext_resource type="Script" path="res://scripts/rudder.gd" id="1_porr0"]
+
+[node name="rudderroom" type="Node"]
+script = ExtResource("1_porr0")
+
+[node name="rudder_gui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="rudder_gui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_n8ufj")
+
+[node name="back" type="Button" parent="rudder_gui"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "back"
+
+[connection signal="pressed" from="rudder_gui/back" to="." method="_on_back_pressed"]
