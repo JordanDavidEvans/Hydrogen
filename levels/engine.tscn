@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6e15hq7doip3"]
+[gd_scene load_steps=5 format=3 uid="uid://b6e15hq7doip3"]
 
 [ext_resource type="Script" path="res://scripts/engine.gd" id="1_nhy2x"]
 [ext_resource type="Texture2D" uid="uid://bl8yrbwk58mjh" path="res://images/radio.jpg" id="1_xu0jk"]
 [ext_resource type="Texture2D" uid="uid://3u46ege4l1io" path="res://images/heat.jpg" id="2_m5ktg"]
+[ext_resource type="AudioStream" uid="uid://bgq4i8j54me3d" path="res://sounds/530195__tbsounddesigns__electric-kettle-heating-up-1.wav" id="4_fka8w"]
 
 [node name="engine" type="Control"]
 layout_mode = 3
@@ -36,6 +37,7 @@ step = 10.0
 value = 50.0
 
 [node name="Label" type="Label" parent="powerpanel"]
+layout_mode = 0
 offset_top = -29.0
 offset_right = 56.0
 offset_bottom = -6.0
@@ -52,6 +54,7 @@ step = 0.1
 texture_progress = ExtResource("2_m5ktg")
 
 [node name="coolingpanel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 545.0
 offset_top = 306.0
 offset_right = 585.0
@@ -74,6 +77,10 @@ offset_top = -29.0
 offset_right = 56.0
 offset_bottom = -6.0
 text = "cooling"
+
+[node name="steam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fka8w")
+autoplay = true
 
 [connection signal="drag_ended" from="powerpanel/power" to="." method="_on_power_drag_ended"]
 [connection signal="drag_ended" from="coolingpanel/cooling" to="." method="_on_cooling_drag_ended"]

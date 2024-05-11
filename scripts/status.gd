@@ -23,7 +23,7 @@ func _physics_process(delta):
 	if temp < target_temp:
 		heat -= (( 1 * delta ) * cooling )
 		$"../engine".heat = heat
-	$"../navscene".current_speed = (heat / 100)
+	$"../navscene".current_speed = (heat )
 	$"../navscene".current_heading = $"../rudderroom".heading
 	
 	pass

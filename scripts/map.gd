@@ -11,9 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	direction = Vector2(cos(angle * 10), sin(angle * 10))
-	$RigidBody2D.linear_velocity.x = direction.x
-	$RigidBody2D.linear_velocity.y = direction.y
-	print(angle)
+	$RigidBody2D.linear_velocity.y = (cos(angle) * f)
+	$RigidBody2D.linear_velocity.x = -(sin(angle) * f)
+	print(rad_to_deg(angle))
+	print($RigidBody2D.global_position)
 	pass
 

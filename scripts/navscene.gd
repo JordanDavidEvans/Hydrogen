@@ -11,6 +11,7 @@ func _ready():
 func _physics_process(delta):
 	$map.f = current_speed
 	$map.angle = current_heading
+	print()
 	pass
 	
 

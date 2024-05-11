@@ -24,6 +24,12 @@ window/stretch/mode="canvas_items"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[importer_defaults]
+
+wav={
+"edit/loop_mode": 2
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
