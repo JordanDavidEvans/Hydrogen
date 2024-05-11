@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ux1hc27qeoi"]
+
+[ext_resource type="PackedScene" uid="uid://dylp8vd56wmhq" path="res://levels/wheel.tscn" id="1_eobn8"]
+[ext_resource type="Texture2D" uid="uid://mgl83n1xxeea" path="res://images/rudder.jpg" id="2_rm0tf"]
+
+[node name="rudderroom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -6
+layout_mode = 0
+offset_left = 65.0
+offset_top = -1.0
+offset_right = 1089.0
+offset_bottom = 662.0
+texture = ExtResource("2_rm0tf")
+
+[node name="wheel" parent="." instance=ExtResource("1_eobn8")]
+position = Vector2(606, 371)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Degrees: "
+
+[node name="angledial" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "0"
+visible_characters = 3
+visible_ratio = 3.0

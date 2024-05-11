@@ -1,7 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr1w3chf8fo7k"]
+[gd_scene load_steps=4 format=3 uid="uid://dr1w3chf8fo7k"]
 
 [ext_resource type="PackedScene" uid="uid://cnlvspiq3ajyk" path="res://levels/navroom.tscn" id="1_bcqka"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_q14sw"]
+[ext_resource type="PackedScene" uid="uid://4ux1hc27qeoi" path="res://levels/rudderroom.tscn" id="2_l3tm7"]
 
 [node name="level1" type="Node"]
+script = ExtResource("1_q14sw")
+
+[node name="rudderroom" parent="." instance=ExtResource("2_l3tm7")]
+visible = false
+offset_right = -1152.0
+offset_bottom = -648.0
 
 [node name="controlroom" parent="." instance=ExtResource("1_bcqka")]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[connection signal="engine" from="controlroom" to="." method="_on_controlroom_engine"]
+[connection signal="nav" from="controlroom" to="." method="_on_controlroom_nav"]
+[connection signal="rudder" from="controlroom" to="." method="_on_controlroom_rudder"]

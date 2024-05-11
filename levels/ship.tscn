@@ -19,7 +19,3 @@ texture = ExtResource("1_1x08l")
 position = Vector2(-6, -6)
 rotation = 4.3469
 shape = SubResource("CapsuleShape2D_kdiml")
-
-[node name="direction" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 200, 0)
-width = 5.0

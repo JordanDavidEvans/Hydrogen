@@ -8,11 +8,21 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	pass
 
 
-func _on_start_pressed():
-	print("start")
-	get_tree().change_scene_to_file("res://levels/level_1.tscn")
+func _on_controlroom_engine():
 	pass # Replace with function body.
+
+
+func _on_controlroom_nav():
+	pass # Replace with function body.
+
+
+func _on_controlroom_rudder():
+	$rudderroom.visible = true
+	$controlroom.visible = false
+	pass # Replace with function body.
+
+func enter_room():
+	pass

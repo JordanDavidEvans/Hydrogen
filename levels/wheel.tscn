@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dylp8vd56wmhq"]
+
+[ext_resource type="Script" path="res://scripts/wheel.gd" id="1_okc75"]
+[ext_resource type="Texture2D" uid="uid://dh41b45c3vcap" path="res://images/wheel.png" id="1_qnpv3"]
+
+[node name="wheel" type="Node2D"]
+script = ExtResource("1_okc75")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_qnpv3")
