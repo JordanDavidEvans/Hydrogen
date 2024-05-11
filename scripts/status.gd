@@ -5,7 +5,7 @@ var pos = Vector2(0,0)
 var target_temp
 var heat
 var cooling
-
+var target_heading
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	temp = 50
@@ -23,6 +23,9 @@ func _physics_process(delta):
 	if temp < target_temp:
 		heat -= (( 1 * delta ) * cooling )
 		$"../engine".heat = heat
+	$"../navscene".current_speed = (heat / 100)
+	$"../navscene".current_heading = $"../rudderroom".heading
+	
 	pass
 
 

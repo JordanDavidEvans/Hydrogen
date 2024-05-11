@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://qnl46lq4vwpq"]
+
+[ext_resource type="Script" path="res://scripts/map.gd" id="1_acjvj"]
+[ext_resource type="Texture2D" uid="uid://tay62j7yfj24" path="res://images/map.jpg" id="1_iuxak"]
+
+[node name="map" type="Node2D"]
+script = ExtResource("1_acjvj")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_iuxak")

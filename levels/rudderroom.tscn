@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://4ux1hc27qeoi"]
+[gd_scene load_steps=4 format=3 uid="uid://4ux1hc27qeoi"]
 
 [ext_resource type="PackedScene" uid="uid://dylp8vd56wmhq" path="res://levels/wheel.tscn" id="1_eobn8"]
+[ext_resource type="Script" path="res://scripts/rudderroom.gd" id="1_vw572"]
 [ext_resource type="Texture2D" uid="uid://mgl83n1xxeea" path="res://images/rudder.jpg" id="2_rm0tf"]
 
 [node name="rudderroom" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vw572")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -6
