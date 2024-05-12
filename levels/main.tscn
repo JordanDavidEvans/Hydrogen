@@ -54,5 +54,13 @@ text = "exit"
 stream = ExtResource("3_r6eo0")
 autoplay = true
 
+[node name="LinkButton" type="LinkButton" parent="."]
+offset_left = 820.0
+offset_top = 592.0
+offset_right = 937.0
+offset_bottom = 632.0
+text = "open github of game"
+uri = "https://github.com/JordanDavidEvans/Hydrogen"
+
 [connection signal="pressed" from="menu/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/exit" to="." method="_on_exit_pressed"]

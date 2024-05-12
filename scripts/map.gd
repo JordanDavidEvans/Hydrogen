@@ -15,8 +15,8 @@ signal insides
 var cargo = 20
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mission_pos.x = randf_range(-500, 500)
-	mission_pos.y = randf_range(-500, 500)
+	mission_pos.x = randf_range(-1500, 1500)
+	mission_pos.y = randf_range(-1500, 1500)
 	$RigidBody2D/mission.global_position = mission_pos
 	f = 0
 	pass # Replace with function body.
