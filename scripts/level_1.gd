@@ -42,10 +42,19 @@ func enter_room():
 
 func _on_back_pressed():
 	$engine.visible = false
+	$connection.visible = false
 	$engine.active = false
 	$navscene.visible = false
 	$rudderroom.visible = false
+	$connection.visible = false
 	$rudderroom.active = false
 	$controlroom.visible = true
 	$back.visible = false
+	pass # Replace with function body.
+
+
+func _on_controlroom_radio():
+	enter_room()
+	$controlroom.visible = false
+	$connection.visible = true
 	pass # Replace with function body.

@@ -18,11 +18,11 @@ texture = ExtResource("2_7dtcf")
 
 [node name="NavButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 429.0
-offset_top = 172.0
-offset_right = 479.0
-offset_bottom = 203.0
-text = "enter"
+offset_left = 229.0
+offset_top = 176.0
+offset_right = 279.0
+offset_bottom = 207.0
+text = "Map"
 
 [node name="RudderButton" type="Button" parent="."]
 layout_mode = 0
@@ -41,6 +41,15 @@ offset_bottom = 278.0
 text = "Engine Telegraph
 "
 
+[node name="Radio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 173.0
+offset_right = 502.0
+offset_bottom = 204.0
+text = "Radio Signal"
+
 [connection signal="pressed" from="NavButton" to="." method="_on_nav_button_pressed"]
 [connection signal="pressed" from="RudderButton" to="." method="_on_rudder_button_pressed"]
 [connection signal="pressed" from="EngineButton" to="." method="_on_engine_button_pressed"]
+[connection signal="pressed" from="Radio" to="." method="_on_radio_pressed"]

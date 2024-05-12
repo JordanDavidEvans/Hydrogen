@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6e15hq7doip3"]
+[gd_scene load_steps=8 format=3 uid="uid://b6e15hq7doip3"]
 
 [ext_resource type="Script" path="res://scripts/engine.gd" id="1_nhy2x"]
 [ext_resource type="Texture2D" uid="uid://bl8yrbwk58mjh" path="res://images/radio.jpg" id="1_xu0jk"]
 [ext_resource type="Texture2D" uid="uid://3u46ege4l1io" path="res://images/heat.jpg" id="2_m5ktg"]
 [ext_resource type="AudioStream" uid="uid://bgq4i8j54me3d" path="res://sounds/530195__tbsounddesigns__electric-kettle-heating-up-1.wav" id="4_fka8w"]
+[ext_resource type="AudioStream" uid="uid://c45wp3o5xk3l1" path="res://sounds/629312__greatsoundstube__warning-chime.wav" id="5_alnbs"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tk23x"]
+particles_animation = true
+particles_anim_h_frames = 20
+particles_anim_v_frames = 20
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_imfkv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="engine" type="Control"]
 layout_mode = 3
@@ -18,6 +29,7 @@ script = ExtResource("1_nhy2x")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(1.92, 1.64)
 texture = ExtResource("1_xu0jk")
 
 [node name="powerpanel" type="Panel" parent="."]
@@ -80,7 +92,28 @@ text = "cooling"
 
 [node name="steam" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_fka8w")
+pitch_scale = 0.01
 autoplay = true
 
+[node name="warning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_alnbs")
+
+[node name="fire" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tk23x")
+position = Vector2(961, 1098)
+emitting = false
+amount = 100
+lifetime = 2.0
+texture = ExtResource("2_m5ktg")
+emission_shape = 3
+emission_rect_extents = Vector2(1200, 1)
+gravity = Vector2(0, -900)
+scale_amount_min = 0.0
+scale_amount_max = 57.0
+scale_amount_curve = SubResource("Curve_imfkv")
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
 [connection signal="drag_ended" from="powerpanel/power" to="." method="_on_power_drag_ended"]
+[connection signal="value_changed" from="heat" to="." method="_on_heat_value_changed"]
 [connection signal="drag_ended" from="coolingpanel/cooling" to="." method="_on_cooling_drag_ended"]

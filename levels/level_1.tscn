@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr1w3chf8fo7k"]
+[gd_scene load_steps=8 format=3 uid="uid://dr1w3chf8fo7k"]
 
 [ext_resource type="PackedScene" uid="uid://cnlvspiq3ajyk" path="res://levels/navroom.tscn" id="1_bcqka"]
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_q14sw"]
 [ext_resource type="PackedScene" uid="uid://4ux1hc27qeoi" path="res://levels/rudderroom.tscn" id="2_l3tm7"]
+[ext_resource type="PackedScene" uid="uid://bckl5ow3f08kr" path="res://levels/connection.tscn" id="2_t7hwo"]
 [ext_resource type="Script" path="res://scripts/status.gd" id="4_2ntqu"]
 [ext_resource type="PackedScene" uid="uid://b6e15hq7doip3" path="res://levels/engine.tscn" id="4_mhoee"]
 [ext_resource type="PackedScene" uid="uid://ffflqaaktw41" path="res://levels/navscene.tscn" id="5_vton8"]
 
 [node name="level1" type="Node"]
 script = ExtResource("1_q14sw")
+
+[node name="connection" parent="." instance=ExtResource("2_t7hwo")]
+visible = false
 
 [node name="rudderroom" parent="." instance=ExtResource("2_l3tm7")]
 visible = false
@@ -29,17 +33,21 @@ visible = false
 script = ExtResource("4_2ntqu")
 
 [node name="back" type="Button" parent="."]
-z_index = 1
-offset_left = -5.0
-offset_top = 601.0
-offset_right = 1151.0
-offset_bottom = 650.0
-size_flags_horizontal = 4
+z_index = 6
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -63.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 50
 text = "back"
 
 [connection signal="engine" from="controlroom" to="." method="_on_controlroom_engine"]
 [connection signal="nav" from="controlroom" to="." method="_on_controlroom_nav"]
+[connection signal="radio" from="controlroom" to="." method="_on_controlroom_radio"]
 [connection signal="rudder" from="controlroom" to="." method="_on_controlroom_rudder"]
 [connection signal="cooling" from="engine" to="status" method="_on_engine_cooling"]
 [connection signal="power" from="engine" to="status" method="_on_engine_power"]

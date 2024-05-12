@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=3 uid="uid://bckl5ow3f08kr"]
+
+[ext_resource type="Script" path="res://scripts/radio.gd" id="1_2e8d7"]
+[ext_resource type="Script" path="res://scripts/goal.gd" id="2_g867f"]
+[ext_resource type="Script" path="res://Scripts/Label.gd" id="2_tmhmf"]
+[ext_resource type="Script" path="res://scripts/state.gd" id="3_6aars"]
+[ext_resource type="AudioStream" uid="uid://duarpt472lo7y" path="res://sounds/724708__9voltplasma__am-radio-interference-industrial-sfx.wav" id="4_i4tfg"]
+[ext_resource type="Texture2D" uid="uid://36i7h74a2dmw" path="res://images/note.png" id="5_i7i4l"]
+[ext_resource type="Texture2D" uid="uid://o5koro8unppf" path="res://images/scope.png" id="6_e6dpu"]
+[ext_resource type="AudioStream" uid="uid://cfevqmnxx6fp" path="res://sounds/554164__klankbeeld__morse-on-ham-radio-170805.wav" id="8_ctfve"]
+
+[sub_resource type="Curve" id="Curve_jyqe0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.504132, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ky6lk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504132, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jc18n"]
+bg_color = Color(0.145098, 0.196078, 0.145098, 1)
+
+[node name="connection" type="Node2D"]
+
+[node name="radio" type="Line2D" parent="."]
+position = Vector2(0, 141)
+scale = Vector2(0.5, 0.5)
+width = 20.0
+width_curve = SubResource("Curve_jyqe0")
+script = ExtResource("1_2e8d7")
+
+[node name="goal" type="Line2D" parent="."]
+position = Vector2(0, 141)
+scale = Vector2(0.5, 0.5)
+width_curve = SubResource("Curve_ky6lk")
+script = ExtResource("2_g867f")
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 58.0
+offset_top = 1056.0
+offset_right = 492.0
+offset_bottom = 1135.0
+step = 10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSlider"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HSlider/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_tmhmf")
+
+[node name="Label2" type="Label" parent="HSlider/HBoxContainer"]
+layout_mode = 2
+text = "mhz"
+
+[node name="VSlider" type="VSlider" parent="."]
+offset_left = 679.0
+offset_top = 549.0
+offset_right = 788.0
+offset_bottom = 1015.0
+step = 10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSlider"]
+offset_left = 34.0
+offset_top = -78.0
+offset_right = 82.0
+offset_bottom = -38.0
+
+[node name="Label" type="Label" parent="VSlider/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_tmhmf")
+
+[node name="Label2" type="Label" parent="VSlider/HBoxContainer"]
+layout_mode = 2
+text = "watts"
+
+[node name="state" type="Node" parent="."]
+script = ExtResource("3_6aars")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i4tfg")
+pitch_scale = 0.2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1323.0
+offset_top = -25.0
+offset_right = 2191.0
+offset_bottom = 843.0
+texture = ExtResource("5_i7i4l")
+
+[node name="screen" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(314.52, 527.36)
+scale = Vector2(0.694134, 0.694134)
+texture = ExtResource("6_e6dpu")
+
+[node name="Panel" type="Panel" parent="screen"]
+z_index = -2
+offset_left = -453.0
+offset_top = -760.0
+offset_right = 406.0
+offset_bottom = -34.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jc18n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 307.0
+offset_top = 395.0
+offset_right = 396.0
+offset_bottom = 435.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "SIGNAL: "
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+visible_characters = 3
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "%"
+
+[node name="stable" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ctfve")
+
+[connection signal="drag_ended" from="HSlider" to="state" method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="HSlider" to="radio" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="HSlider" to="state" method="_on_h_slider_value_changed"]
+[connection signal="drag_ended" from="VSlider" to="radio" method="_on_v_slider_drag_ended"]
+[connection signal="drag_ended" from="VSlider" to="state" method="_on_v_slider_drag_ended"]
+[connection signal="value_changed" from="VSlider" to="radio" method="_on_v_slider_value_changed"]
+[connection signal="value_changed" from="VSlider" to="state" method="_on_v_slider_value_changed"]

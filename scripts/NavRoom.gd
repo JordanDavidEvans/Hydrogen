@@ -2,6 +2,7 @@ extends Control
 signal nav
 signal rudder
 signal engine
+signal radio
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -25,4 +26,10 @@ func _on_rudder_button_pressed():
 func _on_engine_button_pressed():
 	engine.emit()
 	print("engine")
+	pass # Replace with function body.
+	
+
+func _on_radio_pressed():
+	radio.emit()
+	print("radio")
 	pass # Replace with function body.
