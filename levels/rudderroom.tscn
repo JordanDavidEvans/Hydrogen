@@ -16,19 +16,23 @@ script = ExtResource("1_vw572")
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -6
 layout_mode = 0
-offset_left = 65.0
-offset_top = -1.0
-offset_right = 1089.0
-offset_bottom = 662.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1925.0
+offset_bottom = 1083.0
 texture = ExtResource("2_rm0tf")
 
 [node name="wheel" parent="." instance=ExtResource("1_eobn8")]
-position = Vector2(606, 371)
+position = Vector2(1010, 622)
+scale = Vector2(2, 2)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 123.0
-offset_bottom = 40.0
+offset_left = 1420.0
+offset_top = 670.0
+offset_right = 1543.0
+offset_bottom = 710.0
+scale = Vector2(2.66949, 2.47338)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 0

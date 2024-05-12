@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr1w3chf8fo7k"]
+[gd_scene load_steps=10 format=3 uid="uid://dr1w3chf8fo7k"]
 
 [ext_resource type="PackedScene" uid="uid://cnlvspiq3ajyk" path="res://levels/navroom.tscn" id="1_bcqka"]
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_q14sw"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/status.gd" id="4_2ntqu"]
 [ext_resource type="PackedScene" uid="uid://b6e15hq7doip3" path="res://levels/engine.tscn" id="4_mhoee"]
 [ext_resource type="PackedScene" uid="uid://ffflqaaktw41" path="res://levels/navscene.tscn" id="5_vton8"]
+[ext_resource type="Script" path="res://levels/enginew.gd" id="6_6yv3l"]
+[ext_resource type="Script" path="res://scripts/warnings.gd" id="8_fib0n"]
 
 [node name="level1" type="Node"]
 script = ExtResource("1_q14sw")
@@ -23,6 +25,45 @@ offset_bottom = -648.0
 offset_right = 0.0
 offset_bottom = 0.0
 
+[node name="VBoxContainer" type="VBoxContainer" parent="controlroom"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 418.0
+offset_right = 162.0
+offset_bottom = 468.0
+
+[node name="radio" type="HBoxContainer" parent="controlroom/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="controlroom/VBoxContainer/radio"]
+layout_mode = 2
+text = "RADIO STATUS: "
+
+[node name="radiow" type="Label" parent="controlroom/VBoxContainer/radio"]
+layout_mode = 2
+script = ExtResource("8_fib0n")
+
+[node name="enigne" type="HBoxContainer" parent="controlroom/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="controlroom/VBoxContainer/enigne"]
+layout_mode = 2
+text = "ENGINE  STATUS: "
+
+[node name="enginew" type="Label" parent="controlroom/VBoxContainer/enigne"]
+layout_mode = 2
+script = ExtResource("6_6yv3l")
+
+[node name="mission" type="HBoxContainer" parent="controlroom/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="controlroom/VBoxContainer/mission"]
+layout_mode = 2
+text = "DISTANCE TO MISSION:"
+
+[node name="Label2" type="Label" parent="controlroom/VBoxContainer/mission"]
+layout_mode = 2
+
 [node name="engine" parent="." instance=ExtResource("4_mhoee")]
 visible = false
 
@@ -38,17 +79,26 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -63.0
+offset_top = -77.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 50
 text = "back"
 
+[connection signal="right" from="connection" to="controlroom/VBoxContainer/radio/radiow" method="_on_connection_right"]
+[connection signal="wrong" from="connection" to="." method="_on_connection_wrong"]
+[connection signal="wrong" from="connection" to="controlroom/VBoxContainer/radio/radiow" method="_on_connection_wrong"]
 [connection signal="engine" from="controlroom" to="." method="_on_controlroom_engine"]
 [connection signal="nav" from="controlroom" to="." method="_on_controlroom_nav"]
 [connection signal="radio" from="controlroom" to="." method="_on_controlroom_radio"]
 [connection signal="rudder" from="controlroom" to="." method="_on_controlroom_rudder"]
+[connection signal="cooling" from="engine" to="." method="_on_engine_cooling"]
+[connection signal="cooling" from="engine" to="controlroom/VBoxContainer/enigne/enginew" method="_on_engine_cooling"]
 [connection signal="cooling" from="engine" to="status" method="_on_engine_cooling"]
+[connection signal="overheat" from="engine" to="." method="_on_engine_overheat"]
+[connection signal="overheat" from="engine" to="controlroom/VBoxContainer/enigne/enginew" method="_on_engine_overheat"]
 [connection signal="power" from="engine" to="status" method="_on_engine_power"]
+[connection signal="cools" from="status" to="controlroom/VBoxContainer/enigne/enginew" method="_on_status_cools"]
+[connection signal="heats" from="status" to="controlroom/VBoxContainer/enigne/enginew" method="_on_status_heats"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

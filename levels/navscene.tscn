@@ -16,4 +16,4 @@ script = ExtResource("1_wao4i")
 [node name="map" parent="." instance=ExtResource("2_fx57y")]
 
 [node name="ship" parent="." instance=ExtResource("3_rekcc")]
-position = Vector2(556, 317)
+position = Vector2(866, 495)

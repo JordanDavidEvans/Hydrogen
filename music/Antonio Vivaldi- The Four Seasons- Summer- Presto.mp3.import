@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://s4wm0wprtm2o"
+path="res://.godot/imported/Antonio Vivaldi- The Four Seasons- Summer- Presto.mp3-6048661d10902d113003ce68b71fcca2.mp3str"
+
+[deps]
+
+source_file="res://music/Antonio Vivaldi- The Four Seasons- Summer- Presto.mp3"
+dest_files=["res://.godot/imported/Antonio Vivaldi- The Four Seasons- Summer- Presto.mp3-6048661d10902d113003ce68b71fcca2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

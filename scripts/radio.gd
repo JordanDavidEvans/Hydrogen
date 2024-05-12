@@ -3,8 +3,8 @@ extends Line2D
 var time = 1
 var var1 = 1
 var var2 = 1
-var multi1 = 1
-var multi2 = 1
+var multi1 = 10
+var multi2 = 20
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

@@ -17,7 +17,6 @@ func _ready():
 func _physics_process(delta):
 	$heat.value = heat
 	$steam.pitch_scale = ( heat / 50 )
-	
 	pass
 
 
@@ -37,4 +36,5 @@ func _on_heat_value_changed(value):
 		$warning.playing = true
 	if value > 95:
 		$fire.emitting = true
+	
 	pass # Replace with function body.
